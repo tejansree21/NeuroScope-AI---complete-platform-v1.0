@@ -1,0 +1,26 @@
+# NeuroScope AI - FastAPI Backend Requirements
+# Install with: pip install -r requirements.txt
+
+# Core API
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+python-multipart==0.0.9
+pydantic==2.7.0
+websockets==12.0
+
+# ML / Inference
+onnxruntime==1.18.0
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+
+# Medical imaging
+pydicom==2.4.4
+SimpleITK==2.3.1
+
+# Report generation
+reportlab==4.2.2
+
+# Utilities
+aiofiles==23.2.1
+python-dotenv==1.0.1
+httpx==0.27.0

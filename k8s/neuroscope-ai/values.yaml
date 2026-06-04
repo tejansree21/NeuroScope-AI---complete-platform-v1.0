@@ -1,0 +1,143 @@
+# NeuroScope AI - Helm Values
+# Override any value with: helm install neuroscope-ai ./neuroscope-ai -f my-values.yaml
+
+# ── Deployment tier ───────────────────────────────────────────────────────────
+tier: gpu   # gpu | cpu | edge
+
+# ── Replica count ─────────────────────────────────────────────────────────────
+replicaCount: 1
+
+# ── Image ─────────────────────────────────────────────────────────────────────
+image:
+  repository: neuroscope-ai
+  tag: gpu
+  pullPolicy: IfNotPresent
+
+# ── Service ───────────────────────────────────────────────────────────────────
+service:
+  type: ClusterIP
+  port: 8000
+  targetPort: 8000
+
+# ── Ingress ───────────────────────────────────────────────────────────────────
+ingress:
+  enabled: true
+  className: nginx
+  host: neuroscope.local
+  tls:
+    enabled: false
+    secretName: neuroscope-tls
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    # WebSocket support
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+
+# ── Resources ─────────────────────────────────────────────────────────────────
+resources:
+  gpu:
+    requests:
+      memory: "4Gi"
+      cpu: "2"
+      nvidia.com/gpu: "1"
+    limits:
+      memory: "8Gi"
+      cpu: "4"
+      nvidia.com/gpu: "1"
+  cpu:
+    requests:
+      memory: "2Gi"
+      cpu: "2"
+    limits:
+      memory: "4Gi"
+      cpu: "4"
+  edge:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "1Gi"
+      cpu: "1"
+
+# ── GPU ───────────────────────────────────────────────────────────────────────
+gpu:
+  enabled: true
+  runtimeClass: nvidia
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+
+# ── Environment variables ─────────────────────────────────────────────────────
+env:
+  NEUROSCOPE_BASE: /app/data
+  TIER: gpu
+  PYTHONUNBUFFERED: "1"
+
+# ── Secrets ───────────────────────────────────────────────────────────────────
+secrets:
+  # Set via --set secrets.secretKey=<value> or external secret manager
+  secretKey: ""
+  anthropicApiKey: ""
+
+# ── Persistent volumes ────────────────────────────────────────────────────────
+persistence:
+  models:
+    enabled: true
+    size: 10Gi
+    storageClass: ""   # uses default storage class
+    accessMode: ReadOnlyMany
+    # existingClaim: neuroscope-models-pvc  # use existing PVC
+  outputs:
+    enabled: true
+    size: 20Gi
+    storageClass: ""
+    accessMode: ReadWriteMany
+
+# ── Redis ─────────────────────────────────────────────────────────────────────
+redis:
+  enabled: true
+  image: redis:7-alpine
+  port: 6379
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+# ── Horizontal Pod Autoscaler ─────────────────────────────────────────────────
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# ── Health checks ─────────────────────────────────────────────────────────────
+healthCheck:
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 10
+  failureThreshold: 3
+
+# ── Pod disruption budget ─────────────────────────────────────────────────────
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 1
+
+# ── Node selector ─────────────────────────────────────────────────────────────
+nodeSelector: {}
+  # kubernetes.io/hostname: gpu-node-01
+
+# ── Monitoring ────────────────────────────────────────────────────────────────
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: false   # requires Prometheus Operator
+  prometheusPort: 9090

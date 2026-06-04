@@ -1,0 +1,41 @@
+# NeuroScope AI - Dockerfile (Tier 3: Edge / Offline)
+# Minimal image -- INT8 models + rule-based fallback
+# Runs on any laptop, no internet required after build
+
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1-mesa-glx libglib2.0-0 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Minimal deps -- no torch, no celery, no redis
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir \
+        fastapi==0.115.0 \
+        uvicorn==0.30.0 \
+        python-multipart==0.0.9 \
+        pydantic==2.7.0 \
+        onnxruntime==1.18.0 \
+        numpy==1.26.4 \
+        opencv-python-headless==4.10.0.84 \
+        aiofiles==23.2.1
+
+COPY src/ .
+RUN mkdir -p /app/data/models /app/data/outputs
+
+ENV NEUROSCOPE_BASE=/app/data
+ENV PYTHONPATH=/app
+ENV TIER=edge
+ENV OFFLINE_MODE=true
+ENV OMP_NUM_THREADS=2
+
+EXPOSE 8000
+
+# Single worker, no reload, minimal memory footprint
+CMD ["uvicorn", "main:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--workers", "1", \
+     "--log-level", "warning"]

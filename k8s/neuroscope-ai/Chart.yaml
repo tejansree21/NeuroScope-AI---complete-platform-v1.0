@@ -1,0 +1,14 @@
+apiVersion: v2
+name: neuroscope-ai
+description: Multi-cancer medical imaging intelligence platform
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - medical-imaging
+  - oncology
+  - ai
+  - onnx
+maintainers:
+  - name: NeuroScope AI
+home: https://github.com/neuroscope-ai

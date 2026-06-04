@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroScope AI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: #111;
+    border-bottom: 1px solid #222;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: #7F77DD;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; color: white;
+  }
+  .logo-text { font-size: 16px; font-weight: 600; color: #e0e0e0; }
+  .logo-sub { font-size: 11px; color: #666; }
+  .header-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: #666;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #1D9E75;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: calc(100vh - 57px);
+  }
+
+  /* Left panel */
+  .panel-left {
+    background: #111;
+    border-right: 1px solid #1e1e1e;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  /* Upload zone */
+  .upload-zone {
+    border: 1.5px dashed #333;
+    border-radius: 10px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .upload-zone:hover { border-color: #7F77DD; background: rgba(127,119,221,0.05); }
+  .upload-zone.drag-over { border-color: #7F77DD; background: rgba(127,119,221,0.1); }
+  .upload-icon { font-size: 28px; margin-bottom: 8px; }
+  .upload-text { font-size: 13px; color: #888; }
+  .upload-text strong { color: #7F77DD; }
+  .upload-sub { font-size: 11px; color: #555; margin-top: 4px; }
+
+  /* Form */
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 12px; color: #666; }
+  select, input[type="text"], input[type="number"], textarea {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 7px;
+    color: #e0e0e0;
+    font-size: 13px;
+    padding: 8px 10px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  select:focus, input:focus, textarea:focus { border-color: #7F77DD; }
+  textarea { resize: vertical; min-height: 60px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  /* Analyze button */
+  .btn-analyze {
+    width: 100%;
+    padding: 11px;
+    background: #7F77DD;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-analyze:hover { background: #6b63c8; }
+  .btn-analyze:active { transform: scale(0.98); }
+  .btn-analyze:disabled { background: #333; color: #666; cursor: not-allowed; }
+  .btn-analyze.running { background: #3a2a2a; color: #D4537E; border: 1px solid #553333; }
+
+  /* Agent progress */
+  .agents-list { display: flex; flex-direction: column; gap: 4px; }
+  .agent-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 6px;
+    font-size: 12px; color: #555;
+    transition: color 0.2s, background 0.2s;
+  }
+  .agent-item.running { color: #EF9F27; background: rgba(239,159,39,0.08); }
+  .agent-item.done { color: #1D9E75; }
+  .agent-item.idle { color: #333; }
+  .agent-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; flex-shrink: 0;
+  }
+  .agent-item.running .agent-dot { animation: pulse 1s infinite; }
+
+  /* Right panel */
+  .panel-right {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  /* Verdict banner */
+  .verdict-banner {
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .verdict-banner.CANCER_FLAGGED { background: rgba(212,83,126,0.15); border: 1px solid rgba(212,83,126,0.3); }
+  .verdict-banner.NORMAL { background: rgba(29,158,117,0.15); border: 1px solid rgba(29,158,117,0.3); }
+  .verdict-banner.REVIEW_REQUIRED { background: rgba(239,159,39,0.15); border: 1px solid rgba(239,159,39,0.3); }
+  .verdict-label {
+    font-size: 20px; font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .verdict-banner.CANCER_FLAGGED .verdict-label { color: #D4537E; }
+  .verdict-banner.NORMAL .verdict-label { color: #1D9E75; }
+  .verdict-banner.REVIEW_REQUIRED .verdict-label { color: #EF9F27; }
+  .verdict-meta { font-size: 13px; color: #888; margin-top: 4px; }
+  .verdict-prob {
+    font-size: 36px; font-weight: 700;
+    text-align: right;
+  }
+  .verdict-banner.CANCER_FLAGGED .verdict-prob { color: #D4537E; }
+  .verdict-banner.NORMAL .verdict-prob { color: #1D9E75; }
+  .verdict-banner.REVIEW_REQUIRED .verdict-prob { color: #EF9F27; }
+  .verdict-prob-label { font-size: 11px; color: #666; text-align: right; }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .stat-card {
+    background: #161616;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-label { font-size: 11px; color: #555; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat-value { font-size: 20px; font-weight: 600; color: #e0e0e0; }
+  .stat-sub { font-size: 11px; color: #666; margin-top: 3px; }
+
+  /* Cards */
+  .card {
+    background: #161616;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .card-title {
+    font-size: 13px; font-weight: 600;
+    color: #888; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  /* Treatment recs */
+  .rec-list { display: flex; flex-direction: column; gap: 8px; }
+  .rec-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    font-size: 13px; color: #ccc;
+  }
+  .rec-num {
+    min-width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(127,119,221,0.2);
+    color: #7F77DD;
+    font-size: 11px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Report text */
+  .report-pre {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 12px;
+    color: #888;
+    background: #0d0d0d;
+    border-radius: 8px;
+    padding: 14px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 300px;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+
+  /* Patient summary */
+  .patient-summary {
+    background: rgba(29,158,117,0.08);
+    border: 1px solid rgba(29,158,117,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  /* Empty state */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 12px;
+    color: #333;
+    text-align: center;
+    padding: 60px;
+  }
+  .empty-icon { font-size: 48px; }
+  .empty-title { font-size: 16px; color: #444; font-weight: 500; }
+  .empty-sub { font-size: 13px; color: #333; }
+
+  /* Priority badge */
+  .priority-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px; font-weight: 600;
+  }
+  .priority-1 { background: rgba(212,83,126,0.2); color: #D4537E; }
+  .priority-2 { background: rgba(239,159,39,0.2); color: #EF9F27; }
+  .priority-3 { background: rgba(127,119,221,0.2); color: #7F77DD; }
+  .priority-4 { background: rgba(29,158,117,0.2); color: #1D9E75; }
+
+  /* Scan ID chip */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #1a1a1a; border: 1px solid #2a2a2a;
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 12px; color: #666; font-family: monospace;
+  }
+
+  /* Latency */
+  .latency { font-size: 11px; color: #444; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 4px; }
+
+  /* Links */
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px;
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 7px;
+    color: #7F77DD;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .link-btn:hover { border-color: #7F77DD; background: rgba(127,119,221,0.08); }
+
+  input[type="file"] { display: none; }
+
+  .results-header {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">N</div>
+    <div>
+      <div class="logo-text">NeuroScope AI</div>
+      <div class="logo-sub">Multi-cancer imaging intelligence</div>
+    </div>
+  </div>
+  <div class="header-status">
+    <div class="status-dot" id="api-dot"></div>
+    <span id="api-status">Connecting...</span>
+    <span style="color:#2a2a2a">|</span>
+    <a href="http://localhost:8000/docs" target="_blank" class="link-btn" style="padding:4px 10px; font-size:11px;">
+      API Docs
+    </a>
+    <a href="http://localhost:3000" target="_blank" class="link-btn" style="padding:4px 10px; font-size:11px;">
+      OHIF Viewer
+    </a>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- Left panel -->
+  <div class="panel-left">
+
+    <div>
+      <div class="section-title">Scan Input</div>
+      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+        <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.dcm" onchange="handleFileSelect(this)">
+        <div class="upload-icon">🫁</div>
+        <div class="upload-text"><strong>Click to upload</strong> or drag & drop</div>
+        <div class="upload-sub">JPEG, PNG, DICOM supported</div>
+      </div>
+      <div id="file-name" style="font-size:12px; color:#666; margin-top:8px; text-align:center;"></div>
+    </div>
+
+    <div>
+      <div class="section-title">Pipeline Config</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="form-group">
+          <label class="form-label">Cancer pipeline</label>
+          <select id="cancer-type">
+            <option value="brain">Brain (MRI)</option>
+            <option value="lung">Lung (CT)</option>
+            <option value="breast">Breast (Mammography)</option>
+            <option value="liver">Liver (CT)</option>
+            <option value="skin">Skin (Dermoscopy)</option>
+            <option value="spine">Spine (MRI)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Age</label>
+            <input type="number" id="patient-age" placeholder="—" min="1" max="120">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sex</label>
+            <select id="patient-sex">
+              <option value="">—</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Clinical notes</label>
+          <textarea id="clinical-notes" placeholder="Symptoms, history..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-analyze" id="analyze-btn" onclick="runAnalysis()" disabled>
+      <span id="btn-icon">▶</span>
+      <span id="btn-text">Select a scan first</span>
+    </button>
+
+    <div>
+      <div class="section-title">Agent Pipeline</div>
+      <div class="agents-list" id="agents-list">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right panel -->
+  <div class="panel-right" id="panel-right">
+    <div class="empty-state" id="empty-state">
+      <div class="empty-icon">🧠</div>
+      <div class="empty-title">Upload a scan to begin</div>
+      <div class="empty-sub">Supports brain, lung, breast, liver, skin and spine imaging</div>
+    </div>
+    <div id="results" style="display:none; flex-direction:column; gap:20px;"></div>
+  </div>
+
+</div>
+
+<script>
+const API = 'http://localhost:8000';
+
+const AGENTS = [
+  { key: 'normalization',  label: 'Scanner normalization' },
+  { key: 'triage',         label: 'Triage & routing' },
+  { key: 'detection',      label: 'Detection ensemble' },
+  { key: 'segmentation',   label: 'Segmentation' },
+  { key: 'classification', label: 'Classification' },
+  { key: 'clinical',       label: 'Clinical intelligence' },
+  { key: 'report',         label: 'Report generation' },
+  { key: 'monitoring',     label: 'QA & ethics' },
+];
+
+const PRIORITY_LABELS = { 1:'CRITICAL', 2:'URGENT', 3:'ROUTINE', 4:'NORMAL', 5:'DEFERRED' };
+
+let selectedFile = null;
+let isRunning = false;
+let ws = null;
+
+function initAgentList() {
+  const el = document.getElementById('agents-list');
+  el.innerHTML = AGENTS.map(a => `
+    <div class="agent-item idle" id="agent-${a.key}">
+      <div class="agent-dot"></div>
+      <span>${a.label}</span>
+    </div>
+  `).join('');
+}
+
+function setAgentState(key, state) {
+  const el = document.getElementById(`agent-${key}`);
+  if (!el) return;
+  el.className = `agent-item ${state}`;
+}
+
+function resetAgents() {
+  AGENTS.forEach(a => setAgentState(a.key, 'idle'));
+}
+
+async function checkHealth() {
+  try {
+    const r = await fetch(`${API}/health`);
+    const d = await r.json();
+    document.getElementById('api-dot').style.background = '#1D9E75';
+    document.getElementById('api-status').textContent = `API online · ${d.models}/7 models`;
+  } catch {
+    document.getElementById('api-dot').style.background = '#D4537E';
+    document.getElementById('api-status').textContent = 'API offline';
+  }
+}
+
+function handleFileSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  selectedFile = file;
+  document.getElementById('file-name').textContent = '📎 ' + file.name;
+  document.getElementById('analyze-btn').disabled = false;
+  document.getElementById('btn-text').textContent = 'Analyze scan';
+  const icon = file.name.toLowerCase().includes('brain') ? '🧠'
+    : file.name.toLowerCase().includes('lung') ? '🫁'
+    : file.name.toLowerCase().includes('skin') ? '🔬' : '🏥';
+  document.querySelector('.upload-icon').textContent = icon;
+}
+
+const zone = document.getElementById('upload-zone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+zone.addEventListener('drop', e => {
+  e.preventDefault();
+  zone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    selectedFile = file;
+    document.getElementById('file-name').textContent = '📎 ' + file.name;
+    document.getElementById('analyze-btn').disabled = false;
+    document.getElementById('btn-text').textContent = 'Analyze scan';
+  }
+});
+
+async function runAnalysis() {
+  if (!selectedFile || isRunning) return;
+
+  isRunning = true;
+  resetAgents();
+
+  const btn = document.getElementById('analyze-btn');
+  btn.className = 'btn-analyze running';
+  document.getElementById('btn-icon').textContent = '⏹';
+  document.getElementById('btn-text').textContent = 'Stop';
+  btn.onclick = stopAnalysis;
+
+  document.getElementById('empty-state').style.display = 'none';
+  const results = document.getElementById('results');
+  results.style.display = 'flex';
+  results.innerHTML = '<div style="color:#555; font-size:13px; padding:20px;">Running pipeline...</div>';
+
+  const cancerType = document.getElementById('cancer-type').value;
+  const age = document.getElementById('patient-age').value;
+  const sex = document.getElementById('patient-sex').value;
+  const notes = document.getElementById('clinical-notes').value;
+
+  const scanId = Math.random().toString(36).slice(2, 10);
+
+  try {
+    const b64 = await fileToBase64(selectedFile);
+    ws = new WebSocket(`${API.replace('http', 'ws')}/ws/analyze/${scanId}`);
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({
+        cancer_type: cancerType,
+        image_b64: b64,
+        patient_age: age ? parseInt(age) : null,
+        patient_sex: sex || null,
+        notes: notes,
+      }));
+    };
+
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data);
+      if (msg.error) { showError(msg.error); return; }
+      if (msg.stage === 'result') {
+        renderResult(msg.data);
+        finishAnalysis();
+      } else if (msg.stage && msg.status) {
+        setAgentState(msg.stage, msg.status);
+      }
+    };
+
+    ws.onerror = () => {
+      httpFallback(cancerType, age, sex, notes, scanId);
+    };
+
+  } catch(e) {
+    showError(e.message);
+    finishAnalysis();
+  }
+}
+
+async function httpFallback(cancerType, age, sex, notes, scanId) {
+  try {
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('cancer_type', cancerType);
+    if (age) formData.append('patient_age', age);
+    if (sex) formData.append('patient_sex', sex);
+    formData.append('clinical_notes', notes);
+
+    const r = await fetch(`${API}/analyze/sync`, { method:'POST', body: formData });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const data = await r.json();
+    renderResult(data);
+  } catch(e) {
+    showError(e.message);
+  } finally {
+    finishAnalysis();
+  }
+}
+
+function stopAnalysis() {
+  if (ws) { ws.close(); ws = null; }
+  finishAnalysis();
+}
+
+function finishAnalysis() {
+  isRunning = false;
+  const btn = document.getElementById('analyze-btn');
+  btn.className = 'btn-analyze';
+  document.getElementById('btn-icon').textContent = '▶';
+  document.getElementById('btn-text').textContent = 'Analyze scan';
+  btn.onclick = runAnalysis;
+  btn.disabled = false;
+}
+
+function renderResult(data) {
+  const results = document.getElementById('results');
+  const prob = (data.cancer_prob * 100).toFixed(1);
+  const conf = data.confidence ? (data.confidence * 100).toFixed(1) : '—';
+  const verdict = data.verdict || 'REVIEW_REQUIRED';
+  const priority = data.priority || 3;
+  const priorityLabel = PRIORITY_LABELS[priority] || 'ROUTINE';
+
+  const recsHtml = (data.treatment_recs || []).slice(0, 6).map((rec, i) => `
+    <div class="rec-item">
+      <div class="rec-num">${i+1}</div>
+      <span>${rec}</span>
+    </div>
+  `).join('');
+
+  results.innerHTML = `
+    <div class="results-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="chip">${data.scan_id || '—'}</div>
+        <div class="priority-badge priority-${priority}">${priorityLabel}</div>
+      </div>
+      <div class="latency">⚡ ${data.latency_ms}ms</div>
+    </div>
+
+    <div class="verdict-banner ${verdict}">
+      <div>
+        <div class="verdict-label">${verdict.replace('_',' ')}</div>
+        <div class="verdict-meta">${(data.cancer_type||'').toUpperCase()} · ${data.tumor_type || '—'}
+          ${data.who_grade ? ' · ' + data.who_grade : ''}
+        </div>
+      </div>
+      <div>
+        <div class="verdict-prob">${prob}%</div>
+        <div class="verdict-prob-label">cancer probability</div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Tumor type</div>
+        <div class="stat-value" style="font-size:16px;">${data.tumor_type || '—'}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Confidence</div>
+        <div class="stat-value">${conf}%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">WHO grade</div>
+        <div class="stat-value" style="font-size:14px;">${data.who_grade || '—'}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Priority</div>
+        <div class="stat-value" style="font-size:16px;">${priorityLabel}</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-dot" style="background:#EF9F27;"></div>
+        Treatment recommendations
+      </div>
+      <div class="rec-list">${recsHtml || '<div style="color:#444; font-size:13px;">No recommendations available</div>'}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-dot" style="background:#1D9E75;"></div>
+        Patient summary
+      </div>
+      <div class="patient-summary">${data.plain_summary || '—'}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-title-dot" style="background:#7F77DD;"></div>
+        Clinical report
+      </div>
+      <div class="report-pre">${data.report_text || '—'}</div>
+    </div>
+  `;
+
+  AGENTS.forEach(a => setAgentState(a.key, 'done'));
+}
+
+function showError(msg) {
+  document.getElementById('results').innerHTML = `
+    <div style="background:rgba(212,83,126,0.1); border:1px solid rgba(212,83,126,0.3);
+                border-radius:10px; padding:16px; color:#D4537E; font-size:13px;">
+      ⚠️ Error: ${msg}<br>
+      <span style="color:#666; font-size:12px; margin-top:4px; display:block;">
+        Make sure the API is running: uvicorn main:app --host 0.0.0.0 --port 8000
+      </span>
+    </div>
+  `;
+}
+
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+initAgentList();
+checkHealth();
+setInterval(checkHealth, 30000);
+</script>
+</body>
+</html>

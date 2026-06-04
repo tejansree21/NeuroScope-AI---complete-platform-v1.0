@@ -1,0 +1,41 @@
+# NeuroScope AI - Dockerfile (Tier 2: CPU Workstation)
+# Base: Python 3.11 slim
+# Inference: INT8 quantized via onnxruntime (CPU)
+
+FROM python:3.11-slim
+
+# ── System deps ───────────────────────────────────────────────────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 libglib2.0-0 libsm6 libxext6 libxrender-dev \
+    libgomp1 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# ── Python deps (CPU-only onnxruntime) ───────────────────────────────────────
+COPY src/requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    sed 's/onnxruntime-gpu/onnxruntime/' requirements.txt > requirements_cpu.txt && \
+    pip install --no-cache-dir -r requirements_cpu.txt
+
+# ── App source ────────────────────────────────────────────────────────────────
+COPY src/ .
+
+# ── Data dirs ─────────────────────────────────────────────────────────────────
+RUN mkdir -p /app/data/models /app/data/outputs /app/data/logs
+
+ENV NEUROSCOPE_BASE=/app/data
+ENV PYTHONPATH=/app
+ENV TIER=cpu
+ENV OMP_NUM_THREADS=4
+
+HEALTHCHECK --interval=30s --timeout=15s --start-period=90s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--workers", "1", \
+     "--log-level", "info"]

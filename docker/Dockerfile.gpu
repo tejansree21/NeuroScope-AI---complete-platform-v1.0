@@ -1,0 +1,51 @@
+# NeuroScope AI - Dockerfile (Tier 1: GPU)
+# Base: CUDA 12.1 + Python 3.11
+# Inference: FP32/FP16 via onnxruntime-gpu
+
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+
+# ── System deps ───────────────────────────────────────────────────────────────
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 python3.11-dev python3-pip \
+    libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev \
+    libgomp1 curl wget git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN ln -sf /usr/bin/python3.11 /usr/bin/python3 && \
+    ln -sf /usr/bin/python3.11 /usr/bin/python
+
+# ── Working directory ─────────────────────────────────────────────────────────
+WORKDIR /app
+
+# ── Python deps ───────────────────────────────────────────────────────────────
+COPY src/requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir \
+        torch --index-url https://download.pytorch.org/whl/cu121 && \
+    pip install --no-cache-dir -r requirements.txt
+
+# ── App source ────────────────────────────────────────────────────────────────
+COPY src/ .
+
+# ── Data dirs ─────────────────────────────────────────────────────────────────
+RUN mkdir -p /app/data/models /app/data/outputs /app/data/checkpoints /app/data/logs
+
+# ── Environment ───────────────────────────────────────────────────────────────
+ENV NEUROSCOPE_BASE=/app/data
+ENV PYTHONPATH=/app
+ENV TIER=gpu
+
+# ── Health check ──────────────────────────────────────────────────────────────
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# ── Expose ────────────────────────────────────────────────────────────────────
+EXPOSE 8000
+
+# ── Run ───────────────────────────────────────────────────────────────────────
+CMD ["uvicorn", "main:app", \
+     "--host", "0.0.0.0", \
+     "--port", "8000", \
+     "--workers", "1", \
+     "--log-level", "info"]

@@ -1,0 +1,209 @@
+---
+# ── Service ───────────────────────────────────────────────────────────────────
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-api
+  labels:
+    app: neuroscope-ai
+    component: api
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP
+      name: http
+  selector:
+    app: neuroscope-ai
+    component: api
+
+---
+# ── Ingress ───────────────────────────────────────────────────────────────────
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    {{- toYaml .Values.ingress.annotations | nindent 4 }}
+spec:
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-api
+                port:
+                  number: {{ .Values.service.port }}
+{{- end }}
+
+---
+# ── Secrets ───────────────────────────────────────────────────────────────────
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}-secrets
+type: Opaque
+stringData:
+  secretKey: {{ .Values.secrets.secretKey | default (randAlphaNum 32) | quote }}
+  anthropicApiKey: {{ .Values.secrets.anthropicApiKey | default "" | quote }}
+
+---
+# ── Models PVC ────────────────────────────────────────────────────────────────
+{{- if .Values.persistence.models.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-models-pvc
+spec:
+  accessModes:
+    - {{ .Values.persistence.models.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.models.size }}
+  {{- if .Values.persistence.models.storageClass }}
+  storageClassName: {{ .Values.persistence.models.storageClass }}
+  {{- end }}
+{{- end }}
+
+---
+# ── Outputs PVC ───────────────────────────────────────────────────────────────
+{{- if .Values.persistence.outputs.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-outputs-pvc
+spec:
+  accessModes:
+    - {{ .Values.persistence.outputs.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.outputs.size }}
+  {{- if .Values.persistence.outputs.storageClass }}
+  storageClassName: {{ .Values.persistence.outputs.storageClass }}
+  {{- end }}
+{{- end }}
+
+---
+# ── Redis Deployment ──────────────────────────────────────────────────────────
+{{- if .Values.redis.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-redis
+  labels:
+    app: neuroscope-ai
+    component: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neuroscope-ai
+      component: redis
+  template:
+    metadata:
+      labels:
+        app: neuroscope-ai
+        component: redis
+    spec:
+      containers:
+        - name: redis
+          image: {{ .Values.redis.image }}
+          ports:
+            - containerPort: {{ .Values.redis.port }}
+          command:
+            - redis-server
+            - --maxmemory
+            - 512mb
+            - --maxmemory-policy
+            - allkeys-lru
+          resources:
+            {{- toYaml .Values.redis.resources | nindent 12 }}
+          livenessProbe:
+            exec:
+              command: [redis-cli, ping]
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-redis
+  labels:
+    app: neuroscope-ai
+    component: redis
+spec:
+  ports:
+    - port: {{ .Values.redis.port }}
+      targetPort: {{ .Values.redis.port }}
+  selector:
+    app: neuroscope-ai
+    component: redis
+{{- end }}
+
+---
+# ── Horizontal Pod Autoscaler ─────────────────────────────────────────────────
+{{- if .Values.autoscaling.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Release.Name }}-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Release.Name }}-api
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
+{{- end }}
+
+---
+# ── Pod Disruption Budget ─────────────────────────────────────────────────────
+{{- if .Values.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Release.Name }}-pdb
+spec:
+  minAvailable: {{ .Values.podDisruptionBudget.minAvailable }}
+  selector:
+    matchLabels:
+      app: neuroscope-ai
+      component: api
+{{- end }}
+
+---
+# ── ConfigMap ─────────────────────────────────────────────────────────────────
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  TIER: {{ .Values.tier | quote }}
+  NEUROSCOPE_BASE: "/app/data"
+  LOG_LEVEL: "info"
+  MAX_WORKERS: "1"

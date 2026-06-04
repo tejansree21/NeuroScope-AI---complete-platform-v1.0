@@ -1,0 +1,35 @@
+# Datasets -- too large for GitHub
+datasets/
+
+# Model weights -- too large
+models/production/
+models/quantized/
+checkpoints/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Outputs
+outputs/
+logs/
+feedback/
+longitudinal/
+
+# Secrets
+configs/users.json
+.env
+*.env
+
+# Large files
+*.nii.gz
+*.dcm
+*.tar
+*.onnx
+
+# OS
+.DS_Store
+Thumbs.db

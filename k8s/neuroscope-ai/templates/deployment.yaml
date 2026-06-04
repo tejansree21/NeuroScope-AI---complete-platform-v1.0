@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-api
+  labels:
+    app: neuroscope-ai
+    component: api
+    tier: {{ .Values.tier }}
+    version: {{ .Chart.AppVersion }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: neuroscope-ai
+      component: api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0   # zero-downtime deployments
+  template:
+    metadata:
+      labels:
+        app: neuroscope-ai
+        component: api
+        tier: {{ .Values.tier }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      {{- if and .Values.gpu.enabled (eq .Values.tier "gpu") }}
+      runtimeClassName: {{ .Values.gpu.runtimeClass }}
+      tolerations:
+        {{- toYaml .Values.gpu.tolerations | nindent 8 }}
+      {{- end }}
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+      initContainers:
+        # Wait for Redis to be ready before starting the API
+        - name: wait-for-redis
+          image: redis:7-alpine
+          command:
+            - sh
+            - -c
+            - |
+              until redis-cli -h {{ .Release.Name }}-redis ping; do
+                echo "Waiting for Redis..."
+                sleep 2
+              done
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "50m"
+
+      containers:
+        - name: neuroscope-api
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8000
+              name: http
+
+          env:
+            {{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+            {{- end }}
+            - name: NEUROSCOPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secrets
+                  key: secretKey
+                  optional: true
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secrets
+                  key: anthropicApiKey
+                  optional: true
+            - name: CELERY_BROKER_URL
+              value: "redis://{{ .Release.Name }}-redis:6379/0"
+
+          volumeMounts:
+            - name: models
+              mountPath: /app/data/models
+              readOnly: true
+            - name: outputs
+              mountPath: /app/data/outputs
+
+          resources:
+            {{- if eq .Values.tier "gpu" }}
+            {{- toYaml .Values.resources.gpu | nindent 12 }}
+            {{- else if eq .Values.tier "cpu" }}
+            {{- toYaml .Values.resources.cpu | nindent 12 }}
+            {{- else }}
+            {{- toYaml .Values.resources.edge | nindent 12 }}
+            {{- end }}
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: {{ .Values.healthCheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.healthCheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.healthCheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.healthCheck.failureThreshold }}
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+      volumes:
+        - name: models
+          {{- if .Values.persistence.models.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-models-pvc
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        - name: outputs
+          {{- if .Values.persistence.outputs.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-outputs-pvc
+          {{- else }}
+          emptyDir: {}
+          {{- end }}

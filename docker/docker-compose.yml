@@ -1,0 +1,166 @@
+# NeuroScope AI - Docker Compose
+# Three profiles: gpu (Tier 1), cpu (Tier 2), edge (Tier 3)
+#
+# Usage:
+#   Tier 1 GPU   : docker-compose --profile gpu up
+#   Tier 2 CPU   : docker-compose --profile cpu up
+#   Tier 3 Edge  : docker-compose --profile edge up
+
+version: '3.9'
+
+x-neuroscope-env: &neuroscope-env
+  NEUROSCOPE_BASE: /app/data
+  PYTHONUNBUFFERED: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+
+services:
+
+  # ── Tier 1: GPU Server ──────────────────────────────────────────────────────
+  neuroscope-gpu:
+    profiles: [gpu]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.gpu
+    image: neuroscope-ai:gpu
+    container_name: neuroscope_gpu
+    runtime: nvidia
+    environment:
+      <<: *neuroscope-env
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      TIER: gpu
+    volumes:
+      - neuroscope-models:/app/data/models
+      - neuroscope-outputs:/app/data/outputs
+      - neuroscope-checkpoints:/app/data/checkpoints
+    ports:
+      - "8000:8000"
+    networks:
+      - neuroscope-net
+    depends_on:
+      - redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # ── Tier 2: CPU Workstation ─────────────────────────────────────────────────
+  neuroscope-cpu:
+    profiles: [cpu]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.cpu
+    image: neuroscope-ai:cpu
+    container_name: neuroscope_cpu
+    environment:
+      <<: *neuroscope-env
+      TIER: cpu
+      OMP_NUM_THREADS: "4"
+      MKL_NUM_THREADS: "4"
+    volumes:
+      - neuroscope-models:/app/data/models
+      - neuroscope-outputs:/app/data/outputs
+    ports:
+      - "8000:8000"
+    networks:
+      - neuroscope-net
+    depends_on:
+      - redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+
+  # ── Tier 3: Edge / Offline ──────────────────────────────────────────────────
+  neuroscope-edge:
+    profiles: [edge]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.edge
+    image: neuroscope-ai:edge
+    container_name: neuroscope_edge
+    environment:
+      <<: *neuroscope-env
+      TIER: edge
+      OFFLINE_MODE: "true"
+      OMP_NUM_THREADS: "2"
+    volumes:
+      - ./models:/app/data/models:ro    # mount models as read-only
+      - neuroscope-outputs:/app/data/outputs
+    ports:
+      - "8000:8000"
+    networks:
+      - neuroscope-net
+    restart: unless-stopped
+
+  # ── Redis (task queue + caching) ────────────────────────────────────────────
+  redis:
+    profiles: [gpu, cpu]
+    image: redis:7-alpine
+    container_name: neuroscope_redis
+    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    networks:
+      - neuroscope-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Celery Worker (async tasks) ─────────────────────────────────────────────
+  celery-worker:
+    profiles: [gpu, cpu]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.cpu
+    image: neuroscope-ai:cpu
+    container_name: neuroscope_worker
+    command: celery -A tasks worker --loglevel=info --concurrency=2
+    environment:
+      <<: *neuroscope-env
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    volumes:
+      - neuroscope-models:/app/data/models
+      - neuroscope-outputs:/app/data/outputs
+    networks:
+      - neuroscope-net
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  # ── Prometheus monitoring ───────────────────────────────────────────────────
+  prometheus:
+    profiles: [gpu, cpu]
+    image: prom/prometheus:latest
+    container_name: neuroscope_prometheus
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - neuroscope-net
+    restart: unless-stopped
+
+networks:
+  neuroscope-net:
+    driver: bridge
+
+volumes:
+  neuroscope-models:
+  neuroscope-outputs:
+  neuroscope-checkpoints:
