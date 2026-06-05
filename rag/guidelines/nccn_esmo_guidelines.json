@@ -1,0 +1,138 @@
+[
+  {
+    "id": "nccn_brain_gbm_2024",
+    "source": "NCCN Guidelines CNS Tumors v1.2024",
+    "tumor": "glioblastoma",
+    "grade": "Grade IV",
+    "title": "GBM Standard of Care -- Stupp Protocol",
+    "content": "Newly diagnosed GBM: maximal safe surgical resection followed by concurrent radiotherapy (60Gy/30 fractions) plus temozolomide (75mg/m2/day). Adjuvant TMZ 150-200mg/m2 day 1-5 every 28 days for 6 cycles. MGMT promoter methylation testing required -- methylated patients have significantly better response to TMZ (OS 21.7 vs 12.7 months). Tumor treating fields (Optune) category 1 recommendation for unmethylated. Bevacizumab approved for recurrent GBM (PFS benefit, no OS benefit). IDH1/2 mutation testing required for classification.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "glioblastoma",
+      "GBM",
+      "temozolomide",
+      "radiotherapy",
+      "MGMT",
+      "IDH"
+    ],
+    "cancer_type": "brain"
+  },
+  {
+    "id": "nccn_brain_lgg_2024",
+    "source": "NCCN Guidelines CNS Tumors v1.2024",
+    "tumor": "low-grade glioma",
+    "grade": "Grade II",
+    "title": "Low-Grade Glioma Management",
+    "content": "IDH-mutant grade 2 glioma: observation acceptable for low-risk (age <40, complete resection, no contrast enhancement). High-risk: RT 45-54Gy + PCV chemotherapy (category 1). 1p/19q codeletion defines oligodendroglioma -- better prognosis. Temozolomide alternative to PCV for IDH-mutant astrocytoma. MRI surveillance every 3-6 months first 5 years.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "low-grade glioma",
+      "IDH",
+      "1p19q",
+      "PCV",
+      "oligodendroglioma"
+    ],
+    "cancer_type": "brain"
+  },
+  {
+    "id": "nccn_meningioma_2024",
+    "source": "NCCN Guidelines CNS Tumors v1.2024",
+    "tumor": "meningioma",
+    "grade": "Grade I",
+    "title": "Meningioma Management",
+    "content": "Grade I meningioma: observation for asymptomatic, small (<3cm). Surgery for symptomatic or enlarging tumors (Simpson grade I-II resection target). Stereotactic radiosurgery (SRS) for surgically inaccessible or residual disease. Grade II: surgery + adjuvant RT 54-60Gy. Grade III: surgery + RT, consider clinical trial.",
+    "evidence_level": "Category 2A",
+    "tags": [
+      "meningioma",
+      "SRS",
+      "radiosurgery",
+      "Simpson"
+    ],
+    "cancer_type": "brain"
+  },
+  {
+    "id": "nccn_breast_invasive_2024",
+    "source": "NCCN Guidelines Breast Cancer v4.2024",
+    "tumor": "invasive breast carcinoma",
+    "title": "Invasive Breast Cancer -- Surgical and Systemic Therapy",
+    "content": "Stage I-II invasive breast cancer: breast conservation (lumpectomy + RT) equivalent to mastectomy for local control (category 1). Sentinel lymph node biopsy standard for clinically node-negative. HER2-positive: trastuzumab + pertuzumab + taxane-based chemo (THP). ER/PR-positive, HER2-negative: endocrine therapy (tamoxifen or AI) +/- CDK4/6 inhibitor. Triple-negative: pembrolizumab + chemo for PD-L1 positive. Neoadjuvant chemo for tumors >2cm or node-positive (pathologic CR improves survival). Oncotype DX for node-negative, ER+, HER2- to guide chemo decision.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "breast cancer",
+      "HER2",
+      "trastuzumab",
+      "tamoxifen",
+      "CDK4/6",
+      "TNBC"
+    ],
+    "cancer_type": "breast"
+  },
+  {
+    "id": "nccn_melanoma_2024",
+    "source": "NCCN Guidelines Melanoma v2.2024",
+    "tumor": "melanoma",
+    "title": "Cutaneous Melanoma Treatment",
+    "content": "Stage I-II: wide local excision with margins based on Breslow thickness (0.8-1mm: 1cm margin; >2mm: 2cm margin). SLNB for tumors >0.8mm or with ulceration/mitosis. Stage III-IV: pembrolizumab or nivolumab first-line immunotherapy (category 1). BRAF V600E/K mutation (50% of melanomas): dabrafenib + trametinib targeted therapy. Ipilimumab + nivolumab for high-risk stage III (category 1). Adjuvant pembrolizumab after resection reduces recurrence 35%.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "melanoma",
+      "pembrolizumab",
+      "nivolumab",
+      "BRAF",
+      "dabrafenib",
+      "immunotherapy"
+    ],
+    "cancer_type": "skin"
+  },
+  {
+    "id": "nccn_lung_nsclc_2024",
+    "source": "NCCN Guidelines NSCLC v3.2024",
+    "tumor": "NSCLC",
+    "title": "Non-Small Cell Lung Cancer -- Stage-Based Treatment",
+    "content": "Stage I-II resectable NSCLC: lobectomy standard (category 1); SBRT for medically inoperable. Stage III unresectable: concurrent chemo-RT (carboplatin/paclitaxel + RT 60Gy). Durvalumab consolidation after CRT (PACIFIC trial, OS benefit). Stage IV: molecular testing mandatory (EGFR, ALK, ROS1, KRAS G12C, MET, RET, NTRK, PD-L1). EGFR-mutant: osimertinib first-line (category 1). ALK-positive: alectinib first-line. PD-L1 >=50%: pembrolizumab monotherapy. Lung-RADS 4B: biopsy recommended.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "NSCLC",
+      "EGFR",
+      "ALK",
+      "pembrolizumab",
+      "osimertinib",
+      "Lung-RADS"
+    ],
+    "cancer_type": "lung"
+  },
+  {
+    "id": "nccn_hcc_2024",
+    "source": "NCCN Guidelines Hepatocellular Carcinoma v2.2024",
+    "tumor": "hepatocellular carcinoma",
+    "title": "HCC Treatment by Stage (BCLC)",
+    "content": "BCLC-0/A (early): curative intent -- resection, transplant, or ablation. Resection if adequate liver reserve (Child-Pugh A). Milan criteria met: liver transplant preferred for solitary <5cm or 3 nodules <3cm. RFA/MWA for unresectable BCLC-A. BCLC-B (intermediate): TACE (transarterial chemoembolization). BCLC-C (advanced): atezolizumab + bevacizumab first-line (IMbrave150, category 1). Sorafenib/lenvatinib alternatives. LI-RADS 5 lesion = HCC -- no biopsy needed for treatment decision.",
+    "evidence_level": "Category 1",
+    "tags": [
+      "HCC",
+      "TACE",
+      "sorafenib",
+      "BCLC",
+      "LI-RADS",
+      "ablation"
+    ],
+    "cancer_type": "liver"
+  },
+  {
+    "id": "nass_spine_2024",
+    "source": "NASS Evidence-Based Guidelines 2024",
+    "tumor": "degenerative lumbar stenosis",
+    "title": "Lumbar Spinal Stenosis Management",
+    "content": "Neurogenic claudication: conservative management first 6-12 weeks (physical therapy, NSAIDs, epidural steroid injection). Surgical decompression (laminectomy) for failed conservative therapy or progressive neurological deficit. Cauda equina syndrome: emergency surgical decompression within 24-48 hours. Spondylolisthesis with instability: fusion in addition to decompression. SPORT trial: surgery superior to conservative at 2 years for severe stenosis. Neural foraminal narrowing Severe: consider ESI before surgery.",
+    "evidence_level": "Grade A",
+    "tags": [
+      "stenosis",
+      "laminectomy",
+      "ESI",
+      "cauda equina",
+      "fusion",
+      "SPORT"
+    ],
+    "cancer_type": "spine"
+  }
+]

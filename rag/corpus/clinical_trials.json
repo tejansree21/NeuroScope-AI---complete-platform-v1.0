@@ -1,0 +1,209 @@
+{
+  "brain": [
+    {
+      "nct_id": "NCT05432804",
+      "title": "Testing the Addition of an Anti-cancer Drug, Selinexor, to the Usual Chemotherapy Treatment (Temozolomide) for Brain Tumors That Have Returned After Previous Treatment",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "Biospecimen Collection",
+        "Magnetic Resonance Imaging",
+        "Placebo Administration"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05432804",
+      "cancer_type": "brain"
+    }
+  ],
+  "breast": [
+    {
+      "nct_id": "NCT06977893",
+      "title": "Neoadjuvant Chemotherapy in Combination With Toripalimab for HR+/HER2- Breast Cancer : a Randomized, Open-label, Parallel-controlled, Multi-center Phase III Study (NEOTORCH-BREAST04)",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "interventions": [
+        "Neoadjuvant Chemotherapy in Combination with Toripalimab",
+        "Neoadjuvant Chemotherapy"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT06977893",
+      "cancer_type": "breast"
+    },
+    {
+      "nct_id": "NCT06949410",
+      "title": "HER2 Vaccine for Locally Advanced Breast Cancer",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "HER2 Vaccine"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT06949410",
+      "cancer_type": "breast"
+    },
+    {
+      "nct_id": "NCT05824975",
+      "title": "A Study to Evaluate the Safety and Therapeutic Activity of GI-102 As a Single Agent and in Combination with Conventional Anti-cancer Drugs, Pembrolizumab or Trastuzumab Deruxtecan(T-DXd) in Patients with Advanced Solid Tumors (KEYNOTE-G08)",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "GI-102 subcutaneous (SC)",
+        "GI-102",
+        "doxorubicin"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05824975",
+      "cancer_type": "breast"
+    },
+    {
+      "nct_id": "NCT07486089",
+      "title": "Dual-Target CAR-NK Cells for Advanced Breast Cancer (HER2+ and TNBC)",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "Dual-target CAR-NK cells (EB-DT-CAR-NK)",
+        "Lymphodepleting chemotherapy",
+        "Supportive care"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07486089",
+      "cancer_type": "breast"
+    },
+    {
+      "nct_id": "NCT06705127",
+      "title": "Radiotherapy Followed by Chemotherapy Combined With Toripalimab in Local Advanced HR-positive,HER2-negative BC.",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "TORIPALIMAB INJECTION(JS001 )",
+        "Stereotactic Body Radiation Therapy (SBRT)"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT06705127",
+      "cancer_type": "breast"
+    }
+  ],
+  "skin": [
+    {
+      "nct_id": "NCT02621021",
+      "title": "A Phase 2 Trial for Metastatic Melanoma Using Adoptive Cell Therapy With Tumor Infiltrating Lymphocytes Plus IL-2 Either Alone or Following the Administration of Pembrolizumab",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "young TIL",
+        "Pembrolizumab",
+        "Aldesleukin"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT02621021",
+      "cancer_type": "skin"
+    },
+    {
+      "nct_id": "NCT05669430",
+      "title": "A Study of GV20-0251 Monotherapy and GV20-0251 in Combination With Pembrolizumab in Participants With Solid Tumor Malignancies",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "GV20-0251",
+        "GV20-0251",
+        "GV20-0251 and Pembrolizumab [KEYTRUDA®]"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05669430",
+      "cancer_type": "skin"
+    },
+    {
+      "nct_id": "NCT06961006",
+      "title": "A Clinical Study of Intismeran Autogene (V940) and Pembrolizumab (MK-3475) in People With Melanoma (V940-012/INTerpath-012)",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "Intismeran autogene",
+        "Pembrolizumab",
+        "Placebo"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT06961006",
+      "cancer_type": "skin"
+    },
+    {
+      "nct_id": "NCT04485013",
+      "title": "TTX-080 HLA-G Antagonist in Subjects With Advanced Cancers",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "TTX-080",
+        "TTX-080",
+        "pembrolizumab"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT04485013",
+      "cancer_type": "skin"
+    },
+    {
+      "nct_id": "NCT06906822",
+      "title": "PLUG-IN: Pembrolizumab Combined With Enfortumab Vedotin for Advanced Melanoma Patients",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "enfortumab vedotin",
+        "pembrolizumab"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT06906822",
+      "cancer_type": "skin"
+    }
+  ],
+  "lung": [
+    {
+      "nct_id": "NCT07185997",
+      "title": "Study to Evaluate Efficacy and Safety of Firmonertinib Compared With Investigator's Choice of EGFR Inhibitor as First-Line Treatment in Participants Who Have Locally Advanced or Metastatic NSCLC With EGFR P-Loop and Alpha C-Helix Compressing (PACC) Uncommon Mutations",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "interventions": [
+        "Firmonertinib",
+        "EGFR-TKI inhibitor based on investigator's choice"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07185997",
+      "cancer_type": "lung"
+    },
+    {
+      "nct_id": "NCT04486833",
+      "title": "Quaratusugene Ozeplasmid (Reqorsa) and Osimertinib in Patients With Advanced Lung Cancer Who Progressed on Osimertinib",
+      "phase": "PHASE1",
+      "status": "RECRUITING",
+      "interventions": [
+        "quaratusugene ozeplasmid",
+        "osimertinib",
+        "Platinum-Based Chemotherapy"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT04486833",
+      "cancer_type": "lung"
+    },
+    {
+      "nct_id": "NCT05011487",
+      "title": "Neoadjuvant Osimertinib + Chemotherapy for EGFR-mutant Stage III NSCLC",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "Osimertinib",
+        "Cisplatin",
+        "Pemetrexed"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT05011487",
+      "cancer_type": "lung"
+    },
+    {
+      "nct_id": "NCT07322783",
+      "title": "Osimertinib Combined With Savolitinib in the Treatment of NSCLC With Low Copy Number MET Amplification",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "• Drug: Savolitinib • Drug: Osimertinib Mesylate Tablets"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07322783",
+      "cancer_type": "lung"
+    },
+    {
+      "nct_id": "NCT07329322",
+      "title": "Phase II Study of Sacituzumab Tirumotecan in Combination With Osimertinib or Sacituzumab Tirumotecan for Neoadjuvant Treatment in Patients With Resectable Epidermal Growth Factor Receptor (EGFR)-Mutated Non-Small Cell Lung Cancer",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "interventions": [
+        "Sacituzumab Tirumotecan",
+        "Osimertinib"
+      ],
+      "url": "https://clinicaltrials.gov/study/NCT07329322",
+      "cancer_type": "lung"
+    }
+  ]
+}

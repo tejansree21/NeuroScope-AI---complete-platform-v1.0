@@ -1,0 +1,66 @@
+[
+  {
+    "nct_id": "NCT02621021",
+    "title": "A Phase 2 Trial for Metastatic Melanoma Using Adoptive Cell Therapy With Tumor Infiltrating Lymphocytes Plus IL-2 Either Alone or Following the Administration of Pembrolizumab",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "young TIL",
+      "Pembrolizumab",
+      "Aldesleukin"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT02621021",
+    "cancer_type": "skin"
+  },
+  {
+    "nct_id": "NCT05669430",
+    "title": "A Study of GV20-0251 Monotherapy and GV20-0251 in Combination With Pembrolizumab in Participants With Solid Tumor Malignancies",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "GV20-0251",
+      "GV20-0251",
+      "GV20-0251 and Pembrolizumab [KEYTRUDA®]"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT05669430",
+    "cancer_type": "skin"
+  },
+  {
+    "nct_id": "NCT06961006",
+    "title": "A Clinical Study of Intismeran Autogene (V940) and Pembrolizumab (MK-3475) in People With Melanoma (V940-012/INTerpath-012)",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "Intismeran autogene",
+      "Pembrolizumab",
+      "Placebo"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT06961006",
+    "cancer_type": "skin"
+  },
+  {
+    "nct_id": "NCT04485013",
+    "title": "TTX-080 HLA-G Antagonist in Subjects With Advanced Cancers",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "TTX-080",
+      "TTX-080",
+      "pembrolizumab"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT04485013",
+    "cancer_type": "skin"
+  },
+  {
+    "nct_id": "NCT06906822",
+    "title": "PLUG-IN: Pembrolizumab Combined With Enfortumab Vedotin for Advanced Melanoma Patients",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "enfortumab vedotin",
+      "pembrolizumab"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT06906822",
+    "cancer_type": "skin"
+  }
+]

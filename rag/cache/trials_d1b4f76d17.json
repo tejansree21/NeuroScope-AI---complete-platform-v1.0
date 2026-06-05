@@ -1,0 +1,63 @@
+[
+  {
+    "nct_id": "NCT06977893",
+    "title": "Neoadjuvant Chemotherapy in Combination With Toripalimab for HR+/HER2- Breast Cancer : a Randomized, Open-label, Parallel-controlled, Multi-center Phase III Study (NEOTORCH-BREAST04)",
+    "phase": "PHASE3",
+    "status": "RECRUITING",
+    "interventions": [
+      "Neoadjuvant Chemotherapy in Combination with Toripalimab",
+      "Neoadjuvant Chemotherapy"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT06977893",
+    "cancer_type": "breast"
+  },
+  {
+    "nct_id": "NCT06949410",
+    "title": "HER2 Vaccine for Locally Advanced Breast Cancer",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "HER2 Vaccine"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT06949410",
+    "cancer_type": "breast"
+  },
+  {
+    "nct_id": "NCT05824975",
+    "title": "A Study to Evaluate the Safety and Therapeutic Activity of GI-102 As a Single Agent and in Combination with Conventional Anti-cancer Drugs, Pembrolizumab or Trastuzumab Deruxtecan(T-DXd) in Patients with Advanced Solid Tumors (KEYNOTE-G08)",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "GI-102 subcutaneous (SC)",
+      "GI-102",
+      "doxorubicin"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT05824975",
+    "cancer_type": "breast"
+  },
+  {
+    "nct_id": "NCT07486089",
+    "title": "Dual-Target CAR-NK Cells for Advanced Breast Cancer (HER2+ and TNBC)",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "Dual-target CAR-NK cells (EB-DT-CAR-NK)",
+      "Lymphodepleting chemotherapy",
+      "Supportive care"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT07486089",
+    "cancer_type": "breast"
+  },
+  {
+    "nct_id": "NCT06705127",
+    "title": "Radiotherapy Followed by Chemotherapy Combined With Toripalimab in Local Advanced HR-positive,HER2-negative BC.",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "TORIPALIMAB INJECTION(JS001 )",
+      "Stereotactic Body Radiation Therapy (SBRT)"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT06705127",
+    "cancer_type": "breast"
+  }
+]

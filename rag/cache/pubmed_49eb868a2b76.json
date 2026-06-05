@@ -1,0 +1,67 @@
+[
+  {
+    "pmid": "39558285",
+    "title": "Classification of lumbar spine disorders using large language models and MRI segmentation.",
+    "abstract": "MRI is critical for diagnosing lumbar spine disorders but its complexity challenges diagnostic accuracy. This study proposes a BERT-based large language model (LLM) to enhance precision in classifying lumbar spine disorders through the integration of MRI data, textual reports, and numerical measurements. The segmentation quality of MRI data is evaluated using dice coefficients (cut-off: 0.92) and intersection over union (IoU) metrics (cut-off: 0.88) to ensure precise anatomical feature extraction. The CNN extracts key lumbar spine features, such as lumbar lordotic angle (LLA) and disc heights, which are tokenized as direct scalar values representing positional relationships. A data source of 28,065 patients with various disorders, including degenerative disc disease, spinal stenosis, and spondylolisthesis, is used to establish diagnostic standards. These standards are refined through post-CNN processing of MRI texture features. The BERT-based spinal LLM model integrates these CNN-extracted MRI features and numerical values through early fusion layers. Segmentation analysis illustrate various lumbar spine disorders and their anatomical changes. The model achieved high performance, with all key metrics nearing 0.9, demonstrating its effectiveness in classifying conditions like spondylolisthesis, herniated disc, and spinal stenosis. External validation further confirmed the model's generalizability across different populations. External validation on 514 expert-validated MRI cases further confirms the model's clinical relevance and generalizability. The BERT-based model classifies 61 combinations of lumbar spine disorders. The BERT-based spinal LLM significantly improves the precision of lumbar spine disorder classification, supporting accurate diagnosis and treatment planning.",
+    "authors": [
+      "Dong Rongpeng",
+      "Cheng Xueliang",
+      "Kang Mingyang"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39558285/"
+  },
+  {
+    "pmid": "39668686",
+    "title": "Relationship Between Paraspinal Sarcopenia and Lumbar Alignment and Facet Joint Osteoarthritis in Patients with Degenerative Lumbar Spinal Stenosis.",
+    "abstract": "Retrospective study analysis. To explore association between degenerative spinal conditions and paraspinal sarcopenia in patients with severe degenerative lumbar spinal stenosis (DLSS). Paraspinal muscles plays an essential role in stabilizing the spine. Paraspinal sarcopenia is progressively recognized as a crucial parameter influencing clinical outcomes in the field of spine surgery. The association between degenerative spinal conditions and paraspinal sarcopenia in patients with severe DLSS has been rarely investigated. This study was conducted on consecutive patients who underwent posterior lumbar interbody fusion at L4/5 single-level for lumbar spinal stenosis between January 2019 and July 2023. The study assessed paraspinal sarcopenia based on the fatty infiltration and Goutallier classification systems (GCS) of multifidus muscle on preoperative magnetic resonance imaging. The study evaluated the association between demographic/radiographic factors and paraspinal sarcopenia in patients with DSLL. Ordinal logistic regression analysis was then performed to adjust for confounding. A total of 129 patients were included, including 38 patients with mild paraspinal sarcopenia, 52 patients with moderate paraspinal sarcopenia, and 39 patients with severe paraspinal sarcopenia. Correlation analysis indicated that age (r=0.366, P<0.001), pelvic incidence (PI) (r=0.407, P<0.001), lumbar lordosis (LL) (r=0.362, P=0.023) were positively correlated with paraspinal sarcopenia, while weight (r=-0.422, P<0.001), cross-sectional area (CSA) of psoas (r=-0613, P<0.001), facet joint angle (FA) (r=-0.447, P=0.016), and The Hounsfield Unit values of L1-L4 (L1-4 HU) (r=0.298, P=0.005) were negatively correlated with paraspinal sarcopenia. Ordinal logistic regression showed that the Facet joint osteoarthritis (FJOA) (odds ratio=2.82, P=0.017), PI (odds ratio=1.15, P<0.001), age (odds ratio=1.14, =0.001), and female (odds ratio=5.26, P=0.04) were associated with paraspinal sarcopenia. O",
+    "authors": [
+      "Liu Song",
+      "Hu Wenjun",
+      "Lin Youxi"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39668686/"
+  },
+  {
+    "pmid": "37788745",
+    "title": "Relationship between lumbar spinal stenosis and axial muscle wasting.",
+    "abstract": "Although the effect of lumbar spinal stenosis (LSS) on the lower extremities is well documented, limited research exists on the effect of spinal stenosis on the posterior paraspinal musculature (PPM). Similar to neurogenic claudication, moderate to severe spinal canal compression can also interfere with the innervation of the PPM, which may result in atrophy and increased fatty infiltration (FI). This study aims to assess the association between LSS and atrophy of the PPM. Retrospective cross-sectional study. Patients undergoing MRI scans at a tertiary orthopedic center for low back pain or as part of a preoperative evaluation. The functional cross-sectional area (fCSA) and percent fatty infiltration (FI) of the PPM at L4. Lumbar MRIs of patients at a tertiary orthopedic center indicated due to lower back pain (LBP) or as a presurgical workup were analyzed. Patients with previous spinal fusion surgery or scoliosis were excluded. LSS was assessed according to the Schizas classification at all lumbar levels. The cross-sectional area of the PPM was measured on a T2-weighted MRI sequence at the upper endplate of L4. The fCSA and fatty infiltration (FI) were calculated using custom software. Crude differences in FI and fCSA between patients with no stenosis and at least mild stenosis were tested with the Wilcoxon signed-rank test. To account for possible confounders, a multivariable linear regression model was used to adjust for age, sex, body mass index (BMI), and disc degeneration. A subgroup analysis according to MRI indication was performed. A total of 522 (55.7% female) patients were included. The median age was 61 years (IQR: 51-71). The greatest degree of moderate and severe stenosis was found at L4/5, 15.7%, and 9.2%, respectively. Stenosis was the least severe at L5/S1 and was found to be 2% for moderate and 0.2% for severe stenosis. The Wilcoxon test showed significantly increased FI of the PPM with stenosis at any lumbar level (p<.001), although no significant",
+    "authors": [
+      "Schönnagel Lukas",
+      "Zhu Jiaqi",
+      "Camino-Willhuber Gaston"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37788745/"
+  },
+  {
+    "pmid": "39087423",
+    "title": "Relationship Between Lumbar Foraminal Stenosis and Multifidus Muscle Atrophy: A Retrospective Cross-Sectional Study.",
+    "abstract": "A retrospective cross-sectional study. To evaluate the relationship between lumbar foraminal stenosis (LFS) and multifidus muscle atrophy. The multifidus muscle is an important stabilizer of the lumbar spine. In LFS, the compression of the segmental nerve can give rise to radicular symptoms and back pain. LFS can impede function and induce atrophy of the segmentally innervated multifidus muscle. Patients with degenerative lumbar spinal conditions who underwent posterior spinal fusion for degenerative lumbar disease from December 2014 to February 2024 were analyzed. Multifidus fatty infiltration (FI) and functional cross-sectional area (fCSA) were determined at the L4 upper endplate axial level on T2-weighted MRI scans using dedicated software. The severity of LFS was assessed at all lumbar levels and sides using the Lee classification (grade: 0-3). For each level, Pfirrmann and Weishaupt gradings were used to assess intervertebral disc disease (IVDD) and facet joint osteoarthritis (FJOA), respectively. Multivariable linear mixed models were run for the LFS grade of each level and side separately as the independent predictor of multifidus FI and fCSA. Each analysis was adjusted for age, sex, BMI, as well as FJOA and IVDD of the level corresponding to the LFS. A total of 216 patients (50.5% female) with a median age of 61.6 years (interquartile range=52.0-69.0) and a median BMI of 28.1 kg/m 2 (interquartile range=24.8-33.0) were included. Linear mixed model analysis revealed that higher multifidus FI [estimate (CI)=1.7% (0.1-3.3), P =0.043] and lower fCSA [-18.6 mm 2 (-34.3 to -2.6), P =0.022] were both significantly predicted by L2-L3 level LFS severity. The observed positive correlation between upper segment LFS and multifidus muscle atrophy points toward compromised innervation. This necessitates further research to establish the causal relationship and guide prevention efforts.",
+    "authors": [
+      "Guven Ali E",
+      "Schönnagel Lukas",
+      "Chiapparelli Erika"
+    ],
+    "year": "2025",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39087423/"
+  },
+  {
+    "pmid": "37997704",
+    "title": "What patient parameters influence lumbar stiffness in patients with hip pathology?",
+    "abstract": "Lumbar stiffness leads to greater hip dependence to achieve sagittal motion and increases instability after total hip arthroplasty (THA). We aimed to determine parameters that influence lumbar stiffness among patients with hip pathology. We hypothesized that modifiable (degenerative changes, spinal canal stenosis, facet orientation) and nonmodifiable factors (muscle condition) would be associated with lumbar spine stiffness. In this retrospective case-cohort study from a tertiary referral center, consecutive patients presenting at a hip specialist clinic underwent standing and deep-seated radiographic assessment to measure lumbar lordosis (∆LL) (stiffness: ∆LL < 20°), hip flexion (∆PFA: pelvic femoral angle), and degree of degenerative-disc-disease (DDD) (facet osteoarthritis, disc height, endplate proliferative changes). Of these, 65 patients were selected with previous lumbar spine magnetic resonance imaging, allowing to determine lumbar facet orientation, spinal canal stenosis (Schizas classification), and flexor- and extensor-muscle atrophy (Goutallier classification). Mean ∆LL was 45° (range: 11°-72°) and four patients (6%) exhibited spine stiffness. Patients with multilevel DDD (n = 22) had less ∆LL than those with no/single level (n = 43) DDD (34° [range: 11°-53°] vs. 51° [21°-72°]; p < 0.001). Number of DDD levels correlated strongly with ∆LL (ρ = -0.642; p < 0.001). Spinal stiffness was only seen in patients with ≥4 DDD levels. There was no correlation between ∆LL and facet orientation (p > 0.05). ∆LL correlated strongly with extensor atrophy at L3-L4 (ρ = -0.473), L4-L5 (ρ = -0.520), and L5-S1 (ρ = -0.473) and poorly with flexors at L4-L5 (ρ = -0.134) and L5-S1 (ρ = -0.227). Lumbar stiffness is dependent on modifiable (muscle atrophy) and nonmodifiable (extend of DDD) factors. This can guide nonoperative management of hip pathology, emphasizing the relevance of core muscle rehabilitation to improve posture and stiffness. Identification ≥4 DDD levels should",
+    "authors": [
+      "Verhaegen Jeroen C F",
+      "Alves Batista Nuno",
+      "Foster Ryan"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37997704/"
+  }
+]

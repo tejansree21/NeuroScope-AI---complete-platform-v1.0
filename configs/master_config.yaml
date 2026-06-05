@@ -1,0 +1,121 @@
+project:
+  name: NeuroScope AI
+  version: '2.0'
+  base_path: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI
+data:
+  root: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets
+paths:
+  datasets:
+    brain_brats: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\brain\brats2024
+    brain_kaggle: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\brain\kaggle_brain_tumor
+    brain_utsw: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\brain\utsw_glioma
+    lung_lidc: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\lung\lidc_idri
+    lung_luna: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\lung\luna16
+    lung_nsclc: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\lung\nsclc_radiomics
+    breast_cbis: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\breast\cbis_ddsm
+    breast_inbreast: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\breast\inbreast
+    breast_cmmd: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\breast\cmmd
+    breast_kau: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\breast\kau_bcmd
+    liver_lits: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\liver\lits
+    skin_ham: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\skin\ham10000
+    skin_isic: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\skin\isic2020
+    skin_ph2: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\skin\ph2
+    spine_rsna: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\datasets\spine\rsna_lumbar
+  checkpoints: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\checkpoints
+  models: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\models
+  outputs: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\outputs
+  logs: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\logs
+  src: C:\Users\tejan\OneDrive\Desktop\drive\NeuroScope_AI\src
+training:
+  device: cuda
+  precision: fp16
+  seed: 42
+  default_workers: 4
+segmentation:
+  brain:
+    model: SegResNet
+    num_classes: 4
+    class_names:
+    - background
+    - NCR
+    - edema
+    - enhancing_tumor
+    roi_size:
+    - 128
+    - 128
+    - 128
+    in_channels: 4
+    label_remap:
+      4: 3
+  liver:
+    model: SegResNet
+    num_classes: 3
+    class_names:
+    - background
+    - liver
+    - tumor
+    hu_window:
+    - -200
+    - 300
+classification:
+  brain_type:
+    classes:
+    - glioma
+    - meningioma
+    - notumor
+    - pituitary
+    num_classes: 4
+  brain_grade:
+    classes:
+    - grade_I
+    - grade_II
+    - grade_III
+    - grade_IV
+    num_classes: 4
+  skin:
+    classes:
+    - akiec
+    - bcc
+    - bkl
+    - df
+    - mel
+    - nv
+    - vasc
+    num_classes: 7
+  breast:
+    classes:
+    - benign
+    - malignant
+    num_classes: 2
+  spine:
+    conditions:
+    - spinal_canal_stenosis
+    - left_neural_foraminal_narrowing
+    - right_neural_foraminal_narrowing
+    - left_subarticular_stenosis
+    - right_subarticular_stenosis
+    levels:
+    - L1_L2
+    - L2_L3
+    - L3_L4
+    - L4_L5
+    - L5_S1
+    severity:
+    - normal_mild
+    - moderate
+    - severe
+molecular:
+  markers:
+  - idh_mutation
+  - mgmt_methylation
+  - 1p19q_codeletion
+agents:
+  verification_gate_thresholds:
+    brain: 0.97
+    lung: 0.95
+    breast: 0.95
+    liver: 0.93
+    skin_melanoma: 0.99
+    skin_other: 0.95
+    spine: 0.95
+  emergency_response_seconds: 30

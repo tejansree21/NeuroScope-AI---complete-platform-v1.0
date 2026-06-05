@@ -1,0 +1,15 @@
+[
+  {
+    "nct_id": "NCT05432804",
+    "title": "Testing the Addition of an Anti-cancer Drug, Selinexor, to the Usual Chemotherapy Treatment (Temozolomide) for Brain Tumors That Have Returned After Previous Treatment",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "Biospecimen Collection",
+      "Magnetic Resonance Imaging",
+      "Placebo Administration"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT05432804",
+    "cancer_type": "brain"
+  }
+]

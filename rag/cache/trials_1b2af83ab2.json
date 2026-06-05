@@ -1,0 +1,63 @@
+[
+  {
+    "nct_id": "NCT07185997",
+    "title": "Study to Evaluate Efficacy and Safety of Firmonertinib Compared With Investigator's Choice of EGFR Inhibitor as First-Line Treatment in Participants Who Have Locally Advanced or Metastatic NSCLC With EGFR P-Loop and Alpha C-Helix Compressing (PACC) Uncommon Mutations",
+    "phase": "PHASE3",
+    "status": "RECRUITING",
+    "interventions": [
+      "Firmonertinib",
+      "EGFR-TKI inhibitor based on investigator's choice"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT07185997",
+    "cancer_type": "lung"
+  },
+  {
+    "nct_id": "NCT04486833",
+    "title": "Quaratusugene Ozeplasmid (Reqorsa) and Osimertinib in Patients With Advanced Lung Cancer Who Progressed on Osimertinib",
+    "phase": "PHASE1",
+    "status": "RECRUITING",
+    "interventions": [
+      "quaratusugene ozeplasmid",
+      "osimertinib",
+      "Platinum-Based Chemotherapy"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT04486833",
+    "cancer_type": "lung"
+  },
+  {
+    "nct_id": "NCT05011487",
+    "title": "Neoadjuvant Osimertinib + Chemotherapy for EGFR-mutant Stage III NSCLC",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "Osimertinib",
+      "Cisplatin",
+      "Pemetrexed"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT05011487",
+    "cancer_type": "lung"
+  },
+  {
+    "nct_id": "NCT07322783",
+    "title": "Osimertinib Combined With Savolitinib in the Treatment of NSCLC With Low Copy Number MET Amplification",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "• Drug: Savolitinib • Drug: Osimertinib Mesylate Tablets"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT07322783",
+    "cancer_type": "lung"
+  },
+  {
+    "nct_id": "NCT07329322",
+    "title": "Phase II Study of Sacituzumab Tirumotecan in Combination With Osimertinib or Sacituzumab Tirumotecan for Neoadjuvant Treatment in Patients With Resectable Epidermal Growth Factor Receptor (EGFR)-Mutated Non-Small Cell Lung Cancer",
+    "phase": "PHASE2",
+    "status": "RECRUITING",
+    "interventions": [
+      "Sacituzumab Tirumotecan",
+      "Osimertinib"
+    ],
+    "url": "https://clinicaltrials.gov/study/NCT07329322",
+    "cancer_type": "lung"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "pmid": "38742379",
+    "title": "Comprehensive analysis of clinical images contributions for melanoma classification using convolutional neural networks.",
+    "abstract": "Timely diagnosis plays a critical role in determining melanoma prognosis, prompting the development of deep learning models to aid clinicians. Questions persist regarding the efficacy of clinical images alone or in conjunction with dermoscopy images for model training. This study aims to compare the classification performance for melanoma of three types of CNN models: those trained on clinical images, dermoscopy images, and a combination of paired clinical and dermoscopy images from the same lesion. We divided 914 image pairs into training, validation, and test sets. Models were built using pre-trained Inception-ResNetV2 convolutional layers for feature extraction, followed by binary classification. Training comprised 20 models per CNN type using sets of random hyperparameters. Best models were chosen based on validation AUC-ROC. Significant AUC-ROC differences were found between clinical versus dermoscopy models (0.661 vs. 0.869, p < 0.001) and clinical versus clinical + dermoscopy models (0.661 vs. 0.822, p = 0.001). Significant sensitivity differences were found between clinical and dermoscopy models (0.513 vs. 0.799, p = 0.01), dermoscopy versus clinical + dermoscopy models (0.799 vs. 1.000, p = 0.02), and clinical versus clinical + dermoscopy models (0.513 vs. 1.000, p < 0.001). Significant specificity differences were found between dermoscopy versus clinical + dermoscopy models (0.800 vs. 0.288, p < 0.001) and clinical versus clinical + dermoscopy models (0.650 vs. 0.288, p < 0.001). CNN models trained on dermoscopy images outperformed those relying solely on clinical images under our study conditions. The potential advantages of incorporating paired clinical and dermoscopy images for CNN-based melanoma classification appear less clear based on our findings.",
+    "authors": [
+      "Rios-Duarte Jorge A",
+      "Diaz-Valencia Andres C",
+      "Combariza Germán"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38742379/"
+  },
+  {
+    "pmid": "38875908",
+    "title": "Systematic review of approaches to detection and classification of skin cancer using artificial intelligence: Development and prospects.",
+    "abstract": "In recent years, there has been a significant improvement in the accuracy of the classification of pigmented skin lesions using artificial intelligence algorithms. Intelligent analysis and classification systems are significantly superior to visual diagnostic methods used by dermatologists and oncologists. However, the application of such systems in clinical practice is severely limited due to a lack of generalizability and risks of potential misclassification. Successful implementation of artificial intelligence-based tools into clinicopathological practice requires a comprehensive study of the effectiveness and performance of existing models, as well as further promising areas for potential research development. The purpose of this systematic review is to investigate and evaluate the accuracy of artificial intelligence technologies for detecting malignant forms of pigmented skin lesions. For the study, 10,589 scientific research and review articles were selected from electronic scientific publishers, of which 171 articles were included in the presented systematic review. All selected scientific articles are distributed according to the proposed neural network algorithms from machine learning to multimodal intelligent architectures and are described in the corresponding sections of the manuscript. This research aims to explore automated skin cancer recognition systems, from simple machine learning algorithms to multimodal ensemble systems based on advanced encoder-decoder models, visual transformers (ViT), and generative and spiking neural networks. In addition, as a result of the analysis, future directions of research, prospects, and potential for further development of automated neural network systems for classifying pigmented skin lesions are discussed.",
+    "authors": [
+      "Lyakhova U A",
+      "Lyakhov P A"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38875908/"
+  },
+  {
+    "pmid": "38905895",
+    "title": "Bluish veil detection and lesion classification using custom deep learnable layers with explainable artificial intelligence (XAI).",
+    "abstract": "Melanoma, one of the deadliest types of skin cancer, accounts for thousands of fatalities globally. The bluish, blue-whitish, or blue-white veil (BWV) is a critical feature for diagnosing melanoma, yet research into detecting BWV in dermatological images is limited. This study utilizes a non-annotated skin lesion dataset, which is converted into an annotated dataset using a proposed imaging algorithm (color threshold techniques) on lesion patches based on color palettes. A Deep Convolutional Neural Network (DCNN) is designed and trained separately on three individual and combined dermoscopic datasets, using custom layers instead of standard activation function layers. The model is developed to categorize skin lesions based on the presence of BWV. The proposed DCNN demonstrates superior performance compared to the conventional BWV detection models across different datasets. The model achieves a testing accuracy of 85.71 % on the augmented PH2 dataset, 95.00 % on the augmented ISIC archive dataset, 95.05 % on the combined augmented (PH2+ISIC archive) dataset, and 90.00 % on the Derm7pt dataset. An explainable artificial intelligence (XAI) algorithm is subsequently applied to interpret the DCNN's decision-making process about the BWV detection. The proposed approach, coupled with XAI, significantly improves the detection of BWV in skin lesions, outperforming existing models and providing a robust tool for early melanoma diagnosis.",
+    "authors": [
+      "Rasel M A",
+      "Abdul Kareem Sameem",
+      "Kwan Zhenli"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38905895/"
+  },
+  {
+    "pmid": "38796546",
+    "title": "Automated Prediction of Malignant Melanoma using Two-Stage Convolutional Neural Network.",
+    "abstract": "A skin lesion refers to an area of the skin that exhibits anomalous growth or distinctive visual characteristics compared to the surrounding skin. Benign skin lesions are noncancerous and generally pose no threat. These irregular skin growths can vary in appearance. On the other hand, malignant skin lesions correspond to skin cancer, which happens to be the most prevalent form of cancer in the United States. Skin cancer involves the unusual proliferation of skin cells anywhere on the body. The conventional method for detecting skin cancer is relatively more painful. This work involves the automated prediction of skin cancer and its types using two stage Convolutional Neural Network (CNN). The first stage of CNN extracts low level features and second stage extracts high level features. Feature selection is done using these two CNN and ABCD (Asymmetry, Border irregularity, Colour variation, and Diameter) technique. The features extracted from the two CNNs are fused with ABCD features and fed into classifiers for the final prediction. The classifiers employed in this work include ensemble learning methods such as gradient boosting and XG boost, as well as machine learning classifiers like decision trees and logistic regression. This methodology is evaluated using the International Skin Imaging Collaboration (ISIC) 2018 and 2019 dataset. As a result, the first stage CNN which is used for creation of new dataset achieved an accuracy of 97.92%. Second stage CNN which is used for feature selection achieved an accuracy of 98.86%. Classification results are obtained for both with and without fusion of features. Therefore, two stage prediction model achieved better results with feature fusion.",
+    "authors": [
+      "Angeline J",
+      "Siva Kailash A",
+      "Karthikeyan J"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38796546/"
+  }
+]

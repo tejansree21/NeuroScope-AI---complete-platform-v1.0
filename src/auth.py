@@ -142,19 +142,18 @@ def bootstrap_default_users():
     users = load_users()
     if not users:
         # Admin user
-        create_user('admin',     'neuroscope_admin_2024',  'admin',
+        create_user('admin', 'NScope@Admin2026!', 'admin',
                     'NeuroScope Admin', 'admin@neuroscope.ai')
         # Clinician demo user
-        create_user('clinician', 'neuroscope_clinic_2024', 'clinician',
+        create_user('clinician', 'NScope@Clinic2026!', 'clinician',
                     'Demo Clinician', 'clinician@neuroscope.ai')
         # Viewer demo user
-        create_user('viewer',    'neuroscope_view_2024',   'viewer',
+        create_user('viewer', 'NScope@View2026!', 'viewer',
                     'Demo Viewer', 'viewer@neuroscope.ai')
-        print('Default users created:')
-        print('  admin     / neuroscope_admin_2024  (admin)')
-        print('  clinician / neuroscope_clinic_2024 (clinician)')
-        print('  viewer    / neuroscope_view_2024   (viewer)')
-        print('IMPORTANT: Change these passwords before production deployment!')
+        # Paul Swider demo account
+        create_user('paul_swider', 'NeuroScope@Demo2026', 'clinician',
+                    'Paul Swider', 'pswider@realactivity.com')
+        print('Default users created.')
 
 
 # ── JWT token operations ──────────────────────────────────────────────────────

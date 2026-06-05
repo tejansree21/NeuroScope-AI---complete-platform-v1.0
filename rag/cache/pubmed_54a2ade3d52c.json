@@ -1,0 +1,41 @@
+[
+  {
+    "pmid": "39530896",
+    "title": "CT/MRI LI-RADS 2024 Update: Treatment Response Assessment.",
+    "abstract": "With the rising incidence of hepatocellular carcinoma, there has been increasing use of local-regional therapy (LRT) to downstage or bridge to transplant, for definitive treatment, and for palliation. The CT/MRI Liver Imaging Reporting and Data System (LI-RADS) Treatment Response Assessment (TRA) algorithm provides guidance for step-by-step tumor assessment after LRT and standardized reporting. Current evidence suggests that the algorithm performs well in the assessment of tumor response to arterial embolic and loco-ablative therapies and fair when assessing response to radiation-based therapies, with limited data to validate the latter. Both evidence-based and expert-based refinements of the algorithm are needed to improve its diagnostic accuracy after varying types of LRT. This review provides an overview of the challenges and limitations of the LI-RADS TRA algorithm version 2017 and discusses the refinements introduced in the updated 2024 LI-RADS algorithm for CT/MRI.",
+    "authors": [
+      "Aslam Anum",
+      "Chernyak Victoria",
+      "Tang An"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39530896/"
+  },
+  {
+    "pmid": "39225612",
+    "title": "The #HOPE4LIVER Single-Arm Pivotal Trial for Histotripsy of Primary and Metastatic Liver Tumors.",
+    "abstract": "Background Histotripsy is a nonthermal, nonionizing, noninvasive, focused US technique that relies on cavitation for mechanical tissue breakdown at the focal point. Preclinical data have shown its safety and technical success in the ablation of liver tumors. Purpose To evaluate the safety and technical success of histotripsy in destroying primary or metastatic liver tumors. Materials and Methods The parallel United States and European Union and England #HOPE4LIVER trials were prospective, multicenter, single-arm studies. Eligible patients were recruited at 14 sites in Europe and the United States from January 2021 to July 2022. Up to three tumors smaller than 3 cm in size could be treated. CT or MRI and clinic visits were performed at 1 week or less preprocedure, at index-procedure, 36 hours or less postprocedure, and 30 days postprocedure. There were co-primary end points of technical success of tumor treatment and absence of procedure-related major complications within 30 days, with performance goals of greater than 70% and less than 25%, respectively. A two-sided 95% Wilson score CI was derived for each end point. Results Forty-four participants (21 from the United States, 23 from the European Union or England; 22 female participants, 22 male participants; mean age, 64 years ± 12 [SD]) with 49 tumors were enrolled and treated. Eighteen participants (41%) had hepatocellular carcinoma and 26 (59%) had non-hepatocellular carcinoma liver metastases. The maximum pretreatment tumor diameter was 1.5 cm ± 0.6 and the maximum post-histotripsy treatment zone diameter was 3.6 cm ± 1.4. Technical success was observed in 42 of 44 treated tumors (95%; 95% CI: 84, 100) and procedure-related major complications were reported in three of 44 participants (7%; 95% CI: 2, 18), both meeting the performance goal. Conclusion The #HOPE4LIVER trials met the co-primary end-point performance goals for technical success and the absence of procedure-related major complications, supporting ea",
+    "authors": [
+      "Mendiratta-Lala Mishal",
+      "Wiggermann Philipp",
+      "Pech Maciej"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39225612/"
+  },
+  {
+    "pmid": "38411519",
+    "title": "Association of LI-RADS and Histopathologic Features with Survival in Patients with Solitary Resected Hepatocellular Carcinoma.",
+    "abstract": "Background Both Liver Imaging Reporting and Data System (LI-RADS) and histopathologic features provide prognostic information in patients with hepatocellular carcinoma (HCC), but whether LI-RADS is independently associated with survival is uncertain. Purpose To assess the association of LI-RADS categories and features with survival outcomes in patients with solitary resected HCC. Materials and Methods This retrospective study included patients with solitary resected HCC from three institutions examined with preoperative contrast-enhanced CT and/or MRI between January 2008 and December 2019. Three independent readers evaluated the LI-RADS version 2018 categories and features. Histopathologic features including World Health Organization tumor grade, microvascular and macrovascular invasion, satellite nodules, and tumor capsule were recorded. Overall survival and disease-free survival were assessed with Cox regression models. Marginal effects of nontargetoid features on survival were estimated using propensity score matching. Results A total of 360 patients (median age, 64 years [IQR, 56-70 years]; 280 male patients) were included. At CT and MRI, the LI-RADS LR-M category was associated with increased risk of recurrence (CT: hazard ratio [HR] = 1.83 [95% CI: 1.26, 2.66], ",
+    "authors": [
+      "Cannella Roberto",
+      "Matteini Francesco",
+      "Dioguardi Burgio Marco"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38411519/"
+  }
+]

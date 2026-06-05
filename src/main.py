@@ -710,11 +710,12 @@ async def serve_ui():
 # ── Entry point ───────────────────────────────────────────────────────────────
 if __name__ == '__main__':
     import uvicorn
+    port = int(os.environ.get('PORT', 7860))
     uvicorn.run(
         'main:app',
         host='0.0.0.0',
-        port=8000,
+        port=port,
         reload=False,
-        workers=1,       # 1 worker for GPU (single GPU, no sharing)
+        workers=1,
         log_level='info',
     )

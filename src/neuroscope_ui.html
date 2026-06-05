@@ -341,7 +341,7 @@
     <div class="status-dot" id="api-dot"></div>
     <span id="api-status">Connecting...</span>
     <span style="color:#2a2a2a">|</span>
-    <a href="http://localhost:8000/docs" target="_blank" class="link-btn" style="padding:4px 10px; font-size:11px;">
+    <a href="/docs" target="_blank" class="link-btn" style="padding:4px 10px; font-size:11px;">
       API Docs
     </a>
     <a href="http://localhost:3000" target="_blank" class="link-btn" style="padding:4px 10px; font-size:11px;">
@@ -428,7 +428,7 @@
 </div>
 
 <script>
-const API = 'http://localhost:8000';
+const API = window.location.origin;
 
 const AGENTS = [
   { key: 'normalization',  label: 'Scanner normalization' },
@@ -691,7 +691,7 @@ function showError(msg) {
                 border-radius:10px; padding:16px; color:#D4537E; font-size:13px;">
       ⚠️ Error: ${msg}<br>
       <span style="color:#666; font-size:12px; margin-top:4px; display:block;">
-        Make sure the API is running: uvicorn main:app --host 0.0.0.0 --port 8000
+        Make sure the NeuroScope API is running
       </span>
     </div>
   `;

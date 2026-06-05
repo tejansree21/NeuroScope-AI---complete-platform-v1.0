@@ -1,0 +1,66 @@
+[
+  {
+    "pmid": "38581113",
+    "title": "Artificial intelligence in lung cancer screening: Detection, classification, prediction, and prognosis.",
+    "abstract": "The exceptional capabilities of artificial intelligence (AI) in extracting image information and processing complex models have led to its recognition across various medical fields. With the continuous evolution of AI technologies based on deep learning, particularly the advent of convolutional neural networks (CNNs), AI presents an expanded horizon of applications in lung cancer screening, including lung segmentation, nodule detection, false-positive reduction, nodule classification, and prognosis. This review initially analyzes the current status of AI technologies. It then explores the applications of AI in lung cancer screening, including lung segmentation, nodule detection, and classification, and assesses the potential of AI in enhancing the sensitivity of nodule detection and reducing false-positive rates. Finally, it addresses the challenges and future directions of AI in lung cancer screening. AI holds substantial prospects in lung cancer screening. It demonstrates significant potential in improving nodule detection sensitivity, reducing false-positive rates, and classifying nodules, while also showing value in predicting nodule growth and pathological/genetic typing. AI offers a promising supportive approach to lung cancer screening, presenting considerable potential in enhancing nodule detection sensitivity, reducing false-positive rates, and classifying nodules. However, the universality and interpretability of AI results need further enhancement. Future research should focus on the large-scale validation of new deep learning-based algorithms and multi-center studies to improve the efficacy of AI in lung cancer screening.",
+    "authors": [
+      "Quanyang Wu",
+      "Yao Huang",
+      "Sicong Wang"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38581113/"
+  },
+  {
+    "pmid": "38365831",
+    "title": "Effective lung nodule detection using deep CNN with dual attention mechanisms.",
+    "abstract": "Novel methods are required to enhance lung cancer detection, which has overtaken other cancer-related causes of death as the major cause of cancer-related mortality. Radiologists have long-standing methods for locating lung nodules in patients with lung cancer, such as computed tomography (CT) scans. Radiologists must manually review a significant amount of CT scan pictures, which makes the process time-consuming and prone to human error. Computer-aided diagnosis (CAD) systems have been created to help radiologists with their evaluations in order to overcome these difficulties. These systems make use of cutting-edge deep learning architectures. These CAD systems are designed to improve lung nodule diagnosis efficiency and accuracy. In this study, a bespoke convolutional neural network (CNN) with a dual attention mechanism was created, which was especially crafted to concentrate on the most important elements in images of lung nodules. The CNN model extracts informative features from the images, while the attention module incorporates both channel attention and spatial attention mechanisms to selectively highlight significant features. After the attention module, global average pooling is applied to summarize the spatial information. To evaluate the performance of the proposed model, extensive experiments were conducted using benchmark dataset of lung nodules. The results of these experiments demonstrated that our model surpasses recent models and achieves state-of-the-art accuracy in lung nodule detection and classification tasks.",
+    "authors": [
+      "UrRehman Zia",
+      "Qiang Yan",
+      "Wang Long"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38365831/"
+  },
+  {
+    "pmid": "38429189",
+    "title": "Improving Image Quality and Nodule Characterization in Ultra-low-dose Lung CT with Deep Learning Image Reconstruction.",
+    "abstract": "To investigate the influence of the deep learning image reconstruction (DLIR) on the image quality and quantitative analysis of pulmonary nodules under ultra-low dose lung CT conditions. This was a prospective study with patient consent and included 56 patients with suspected pulmonary nodules. Patients were examined by both standard-dose CT (SDCT) and ultra-low-dose CT (ULDCT). SDCT images were reconstructed with adaptive statistical iterative reconstruction-V 40% (ASIR-V40%) (group A), while ULDCT images were reconstructed using ASIR-V40% (group B) and high-strength DLIR (DLIR-H) (group C). The three image sets were analyzed using a commercial computer aided diagnosis (CAD) software. Parameters such as nodule length, width, density, volume, risk, and classification were measured. The CAD quantitative data of different nodule types (solid, calcified, and subsolid nodules) and nodule image quality scores evaluated by two physicians on a 5-point scale were compared. The radiation dose in ULDCT was 0.25 ± 0.08mSv, 7.2% that of the 3.48 ± 1.08mSv in SDCT (P < 0.001). 104 pulmonary nodules were detected (51/53 solid, 26/24 calcified and 27/27 subsolid in Groups A and (B&C), respectively). Group B had lower density for solid, calcified nodules, and lower volume and risk for subsolid nodules than Group A, while Group C had lower density for calcified nodules (P < 0.05), There were no significant differences in other parameters among the three groups (P > 0.05). Group A and C had similar image quality for nodules and were higher than Group B (P < 0.05). DLIR-H significantly improves image quality than ASIR-V40% and maintains similar nodule detection and characterization with CAD in ULDCT compared to SDCT.",
+    "authors": [
+      "Ma Guangming",
+      "Dou Yuequn",
+      "Dang Shan"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38429189/"
+  },
+  {
+    "pmid": "39772821",
+    "title": "Diagnostic-therapeutic management of pulmonary nodules.",
+    "abstract": "Lung cancer is one of the leading causes of death worldwide, with incidence and mortality significantly affected by population ageing and changes in the prevalence of risk factors. Lung nodules, which are often detected incidentally on imaging studies, pose a significant diagnostic challenge as they may indicate both benign and malignant processes. Correct diagnosis and management of these nodules is therefore essential to optimize clinical outcomes. This article provides a comprehensive review of diagnostic and therapeutic approaches to pulmonary nodules, focusing on the assessment of malignant potential based on nodule morphology, size and growth potential. Risk factors influencing the decision-making process such as smoking, age and exposure to carcinogens are also discussed. In addition, key recommendations from the Fleischner Society and the British Thoracic Society are discussed in detail. The article analyses the benefits of modern imaging techniques, including the use of artificial intelligence (AI) in the diagnosis of lung nodules. AI technologies, particularly deep learning techniques, have shown high accuracy in detecting and assessing malignancy risk, and their use is increasingly complementary to expert clinical judgement. Finally, the article highlights the importance of a multidisciplinary approach to the diagnosis and management of lung nodules, and also mentions the implementation of a pilot lung cancer screening programme in the Czech Republic aimed at early detection of the disease. This programme has the potential to significantly reduce lung cancer mortality and improve patient prognosis.",
+    "authors": [
+      "Červeňák V",
+      "Chovanec Z",
+      "Berková A"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39772821/"
+  },
+  {
+    "pmid": "38596001",
+    "title": "Classification of Chest CT Lung Nodules Using Collaborative Deep Learning Model.",
+    "abstract": "Early detection of lung cancer through accurate diagnosis of malignant lung nodules using chest CT scans offers patients the highest chance of successful treatment and survival. Despite advancements in computer vision through deep learning algorithms, the detection of malignant nodules faces significant challenges due to insufficient training datasets. This study introduces a model based on collaborative deep learning (CDL) to differentiate between cancerous and non-cancerous nodules in chest CT scans with limited available data. The model dissects a nodule into its constituent parts using six characteristics, allowing it to learn detailed features of lung nodules. It utilizes a CDL submodel that incorporates six types of feature patches to fine-tune a network previously trained with ResNet-50. An adaptive weighting method learned through error backpropagation enhances the process of identifying lung nodules, incorporating these CDL submodels for improved accuracy. The CDL model demonstrated a high level of performance in classifying lung nodules, achieving an accuracy of 93.24%. This represents a significant improvement over current state-of-the-art methods, indicating the effectiveness of the proposed approach. The findings suggest that the CDL model, with its unique structure and adaptive weighting method, offers a promising solution to the challenge of accurately detecting malignant lung nodules with limited data. This approach not only improves diagnostic accuracy but also contributes to the early detection and treatment of lung cancer, potentially saving lives.",
+    "authors": [
+      "Alshamrani Khalaf",
+      "Alshamrani Hassan A"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38596001/"
+  }
+]

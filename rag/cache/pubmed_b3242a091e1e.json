@@ -1,0 +1,67 @@
+[
+  {
+    "pmid": "38640824",
+    "title": "Artificial Intelligence for breast cancer detection: Technology, challenges, and prospects.",
+    "abstract": "This review provides an overview of the current state of artificial intelligence (AI) technology for automated detection of breast cancer in digital mammography (DM) and digital breast tomosynthesis (DBT). It aims to discuss the technology, available AI systems, and the challenges faced by AI in breast cancer screening. The review examines the development of AI technology in breast cancer detection, focusing on deep learning (DL) techniques and their differences from traditional computer-aided detection (CAD) systems. It discusses data pre-processing, learning paradigms, and the need for independent validation approaches. DL-based AI systems have shown significant improvements in breast cancer detection. They have the potential to enhance screening outcomes, reduce false negatives and positives, and detect subtle abnormalities missed by human observers. However, challenges like the lack of standardised datasets, potential bias in training data, and regulatory approval hinder their widespread adoption. AI technology has the potential to improve breast cancer screening by increasing accuracy and reducing radiologist workload. DL-based AI systems show promise in enhancing detection performance and eliminating variability among observers. Standardised guidelines and trustworthy AI practices are necessary to ensure fairness, traceability, and robustness. Further research and validation are needed to establish clinical trust in AI. Collaboration between researchers, clinicians, and regulatory bodies is crucial to address challenges and promote AI implementation in breast cancer screening.",
+    "authors": [
+      "Díaz Oliver",
+      "Rodríguez-Ruíz Alejandro",
+      "Sechopoulos Ioannis"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38640824/"
+  },
+  {
+    "pmid": "38977914",
+    "title": "AI-based selection of individuals for supplemental MRI in population-based breast cancer screening: the randomized ScreenTrustMRI trial.",
+    "abstract": "Screening mammography reduces breast cancer mortality, but studies analyzing interval cancers diagnosed after negative screens have shown that many cancers are missed. Supplemental screening using magnetic resonance imaging (MRI) can reduce the number of missed cancers. However, as qualified MRI staff are lacking, the equipment is expensive to purchase and cost-effectiveness for screening may not be convincing, the utilization of MRI is currently limited. An effective method for triaging individuals to supplemental MRI screening is therefore needed. We conducted a randomized clinical trial, ScreenTrustMRI, using a recently developed artificial intelligence (AI) tool to score each mammogram. We offered trial participation to individuals with a negative screening mammogram and a high AI score (top 6.9%). Upon agreeing to participate, individuals were assigned randomly to one of two groups: those receiving supplemental MRI and those not receiving MRI. The primary endpoint of ScreenTrustMRI is advanced breast cancer defined as either interval cancer, invasive component larger than 15 mm or lymph node positive cancer, based on a 27-month follow-up time from the initial screening. Secondary endpoints, prespecified in the study protocol to be reported before the primary outcome, include cancer detected by supplemental MRI, which is the focus of the current paper. Compared with traditional breast density measures used in a previous clinical trial, the current AI method was nearly four times more efficient in terms of cancers detected per 1,000 MRI examinations (64 versus 16.5). Most additional cancers detected were invasive and several were multifocal, suggesting that their detection was timely. Altogether, our results show that using an AI-based score to select a small proportion (6.9%) of individuals for supplemental MRI after negative mammography detects many missed cancers, making the cost per cancer detected comparable with screening mammography. ClinicalTrials.gov reg",
+    "authors": [
+      "Salim Mattie",
+      "Liu Yue",
+      "Sorkhei Moein"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38977914/"
+  },
+  {
+    "pmid": "39235813",
+    "title": "Cost-Effectiveness of AI for Risk-Stratified Breast Cancer Screening.",
+    "abstract": "Previous research has shown good discrimination of short-term risk using an artificial intelligence (AI) risk prediction model (Mirai). However, no studies have been undertaken to evaluate whether this might translate into economic gains. To assess the cost-effectiveness of incorporating risk-stratified screening using a breast cancer AI model into the United Kingdom (UK) National Breast Cancer Screening Program. This study, conducted from January 1, 2023, to January 31, 2024, involved the development of a decision analytical model to estimate health-related quality of life, cancer survival rates, and costs over the lifetime of the female population eligible for screening. The analysis took a UK payer perspective, and the simulated cohort consisted of women aged 50 to 70 years at screening. Mammography screening at 1 to 6 yearly screening intervals based on breast cancer risk and standard care (screening every 3 years). Incremental net monetary benefit based on quality-adjusted life-years (QALYs) and National Health Service (NHS) costs (given in pounds sterling; to convert to US dollars, multiply by 1.28). Artificial intelligence-based risk-stratified programs were estimated to be cost-saving and increase QALYs compared with the current screening program. A screening schedule of every 6 years for lowest-risk individuals, biannually and triennially for those below and above average risk, respectively, and annually for those at highest risk was estimated to give yearly net monetary benefits within the NHS of approximately £60.4 (US $77.3) million and £85.3 (US $109.2) million, with QALY values set at £20 000 (US $25 600) and £30 000 (US $38 400), respectively. Even in scenarios where decision-makers hesitate to allocate additional NHS resources toward screening, implementing the proposed strategies at a QALY value of £1 (US $1.28) was estimated to generate a yearly monetary benefit of approximately £10.6 (US $13.6) million. In this decision analytical model study of i",
+    "authors": [
+      "Hill Harry",
+      "Roadevin Cristina",
+      "Duffy Stephen"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39235813/"
+  },
+  {
+    "pmid": "38787015",
+    "title": "A Review of Artificial Intelligence in Breast Imaging.",
+    "abstract": "With the increasing dominance of artificial intelligence (AI) techniques, the important prospects for their application have extended to various medical fields, including domains such as in vitro diagnosis, intelligent rehabilitation, medical imaging, and prognosis. Breast cancer is a common malignancy that critically affects women's physical and mental health. Early breast cancer screening-through mammography, ultrasound, or magnetic resonance imaging (MRI)-can substantially improve the prognosis for breast cancer patients. AI applications have shown excellent performance in various image recognition tasks, and their use in breast cancer screening has been explored in numerous studies. This paper introduces relevant AI techniques and their applications in the field of medical imaging of the breast (mammography and ultrasound), specifically in terms of identifying, segmenting, and classifying lesions; assessing breast cancer risk; and improving image quality. Focusing on medical imaging for breast cancer, this paper also reviews related challenges and prospects for AI.",
+    "authors": [
+      "Al-Karawi Dhurgham",
+      "Al-Zaidi Shakir",
+      "Helael Khaled Ahmad"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38787015/"
+  },
+  {
+    "pmid": "38832880",
+    "title": "Early Indicators of the Impact of Using AI in Mammography Screening for Breast Cancer.",
+    "abstract": "Background Retrospective studies have suggested that using artificial intelligence (AI) may decrease the workload of radiologists while preserving mammography screening performance. Purpose To compare workload and screening performance for two cohorts of women who underwent screening before and after AI system implementation. Materials and Methods This retrospective study included 50-69-year-old women who underwent biennial mammography screening in the Capital Region of Denmark. Before AI system implementation (October 1, 2020, to November 17, 2021), all screenings involved double reading. For screenings conducted after AI system implementation (November 18, 2021, to October 17, 2022), likely normal screenings (AI examination score ≤5 before May 3, 2022, or ≤7 on or after May 3, 2022) were single read by one of 19 senior full-time breast radiologists. The remaining screenings were read by two radiologists with AI-assisted decision support. Biopsy and surgical outcomes were retrieved between October 1, 2020, and April 15, 2023, ensuring at least 180 days of follow-up. Screening metrics were compared using the χ",
+    "authors": [
+      "Lauritzen Andreas D",
+      "Lillholm Martin",
+      "Lynge Elsebeth"
+    ],
+    "year": "2024",
+    "source": "pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38832880/"
+  }
+]
