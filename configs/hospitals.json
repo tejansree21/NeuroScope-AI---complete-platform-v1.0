@@ -1,0 +1,32 @@
+{
+  "hospital_a": {
+    "name": "City General Hospital",
+    "country": "Ireland",
+    "contact_email": "",
+    "tenant_ids": [],
+    "email_domains": [],
+    "active": true,
+    "created_at": "2026-06-13T00:00:00",
+    "scan_count": 0
+  },
+  "hospital_b": {
+    "name": "University Medical Centre",
+    "country": "Ireland",
+    "contact_email": "",
+    "tenant_ids": [],
+    "email_domains": [],
+    "active": true,
+    "created_at": "2026-06-13T00:00:00",
+    "scan_count": 0
+  },
+  "hospital_c": {
+    "name": "Regional Cancer Centre",
+    "country": "Ireland",
+    "contact_email": "",
+    "tenant_ids": [],
+    "email_domains": [],
+    "active": true,
+    "created_at": "2026-06-13T00:00:00",
+    "scan_count": 0
+  }
+}
